@@ -31,7 +31,10 @@ function Get-Sin
         $Arc,
         # switch for Hyperbolic sine
         [Parameter(Mandatory=$false)]
-        $Hyperbolic
+        $Hyperbolic,
+        # switch for returning degrees instead of radians
+        [Parameter(Mandatory=$false)]
+        $toDegrees
     )
 
     if ($Arc) {
@@ -44,5 +47,9 @@ function Get-Sin
         $result = [math]::sin($number)
     }
 
-    return $result
+    if($toDegrees) {
+        return (($result * 180) / [math]::pi )
+    } else {
+        return $result
+    }
 }

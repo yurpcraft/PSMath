@@ -31,7 +31,9 @@ function Get-Tan
         $Arc,
         # switch for Hyperbolic tangent
         [Parameter(Mandatory=$false)]
-        $Hyperbolic
+        $Hyperbolic,
+        [Parameter(Mandatory=$false)]
+        $toDegrees
     )
 
     if ($Arc) {
@@ -44,5 +46,9 @@ function Get-Tan
         $result = [math]::tan($number)
     }
 
-    return $result
+    if($toDegrees) {
+        return (($result * 180) / [math]::pi )
+    } else {
+        return $result
+    }
 }

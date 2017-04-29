@@ -32,7 +32,9 @@ function Get-Cos
         $Arc,
         # switch for Hyperbolic Cosine
         [Parameter(Mandatory=$false)]
-        $Hyperbolic
+        $Hyperbolic,
+        [Parameter(Mandatory=$false)]
+        $toDegrees
     )
 
     if ($Arc) {
@@ -45,6 +47,10 @@ function Get-Cos
         $result = [math]::cos($number)
     }
 
-    return $result
+    if($toDegrees) {
+        return (($result * 180) / [math]::pi )
+    } else {
+        return $result
+    }
 
 }
