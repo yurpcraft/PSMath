@@ -29,16 +29,16 @@ function Get-Cos
         $number,
         # switch for Arccosine
         [Parameter(Mandatory=$false)]
-        $ArcCos,
+        $Arc,
         # switch for Hyperbolic Cosine
         [Parameter(Mandatory=$false)]
-        $HyperbolicCos
+        $Hyperbolic
     )
 
-    if ($ArcCos) {
+    if ($Arc) {
         $result = [math]::acos($number)
     }
-    elseif ($HyperbolicCos) {
+    elseif ($Hyperbolic) {
         $result = [math]::cosh($number)
     }
     else {

@@ -1,13 +1,13 @@
 <#
 .Synopsis
-   Retrieves the "nth" root of the input number
+   Retrieves the sin of the input value.
 .DESCRIPTION
    Long description
 .EXAMPLE
-   To take the cube root of 27, you could input the following:
+   To take the sin of a 
 
-   PS> Get-nRoot -number 27 -root 3
-   3
+   PS> Get-Sin -number 90
+   
 .EXAMPLE
    To take the Arcsin of a 
 
@@ -17,5 +17,32 @@
 #>
 function Get-Sin
 {
+    [CmdletBinding()]
+    Param
+    (
+        # Item to take the sine of
+        [Parameter(Mandatory=$true,
+                   ValueFromPipelineByPropertyName=$true,
+                   ValueFromPipeline=$true,
+                   Position=0)]
+        $number,
+        # switch for Arcsine
+        [Parameter(Mandatory=$false)]
+        $Arc,
+        # switch for Hyperbolic sine
+        [Parameter(Mandatory=$false)]
+        $Hyperbolic
+    )
 
+    if ($Arc) {
+        $result = [math]::asin($number)
+    }
+    elseif ($Hyperbolic) {
+        $result = [math]::sinh($number)
+    }
+    else {
+        $result = [math]::sin($number)
+    }
+
+    return $result
 }

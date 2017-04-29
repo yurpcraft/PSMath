@@ -4,13 +4,24 @@
 .DESCRIPTION
    Long description
 .EXAMPLE
-   To take the cube root of 27, you could input the following:
+   To take the floor of 27.23421234 you could input the following:
 
-   PS> Get-nRoot -number 27 -root 3
-   3
+   PS> Get-Floor -number 27.23421234
+   27
 .EXAMPLE
 #>
 function Get-Floor
 {
-
+    [CmdletBinding()]
+    Param
+    (
+        # Item to take the square root of
+        [Parameter(Mandatory=$true,
+                   ValueFromPipelineByPropertyName=$true,
+                   ValueFromPipeline=$true,
+                   Position=0)]
+        [decimal]$number
+    )
+    $result = [math]::floor($number)
+    return $result
 }

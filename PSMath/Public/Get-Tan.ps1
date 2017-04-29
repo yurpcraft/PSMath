@@ -1,13 +1,13 @@
 <#
 .Synopsis
-   Retrieves the "nth" root of the input number
+   Retrieves the tangent of an input value
 .DESCRIPTION
    Long description
 .EXAMPLE
-   To take the cube root of 27, you could input the following:
+   To take the tangent of a value, you could input the following:
 
-   PS> Get-nRoot -number 27 -root 3
-   3
+   PS> Get-Tan -number 
+   
 .EXAMPLE
    To take the Arctan of a 
 
@@ -17,5 +17,32 @@
 #>
 function Get-Tan
 {
+    [CmdletBinding()]
+    Param
+    (
+        # Item to take the tangent of
+        [Parameter(Mandatory=$true,
+                   ValueFromPipelineByPropertyName=$true,
+                   ValueFromPipeline=$true,
+                   Position=0)]
+        $number,
+        # switch for Arctangent
+        [Parameter(Mandatory=$false)]
+        $Arc,
+        # switch for Hyperbolic tangent
+        [Parameter(Mandatory=$false)]
+        $Hyperbolic
+    )
 
+    if ($Arc) {
+        $result = [math]::atan($number)
+    }
+    elseif ($Hyperbolic) {
+        $result = [math]::tanh($number)
+    }
+    else {
+        $result = [math]::tan($number)
+    }
+
+    return $result
 }

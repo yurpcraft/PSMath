@@ -8,7 +8,10 @@
         -Decimal
         -Double
 .EXAMPLE
+   To take the ceiling of a given number, you could input the following:
 
+   PS> Get-Ceiling -number 27.234982143
+   28
 .EXAMPLE
 
 #>
