@@ -20,12 +20,12 @@ function Get-nRoot
                    ValueFromPipelineByPropertyName=$true,
                    ValueFromPipeline=$true,
                    Position=0)]
-        $number,
+        [decimal]$number,
         [Parameter(Mandatory=$true,
                    ValueFromPipelineByPropertyName=$true,
                    ValueFromPipeline=$true,
                    Position=1)]
-        $root
+        [decimal]$root
     )
     $result = [math]::Pow( $number,1/$root )
     return $result

@@ -24,7 +24,7 @@ function Get-SquareRoot
                    ValueFromPipelineByPropertyName=$true,
                    ValueFromPipeline=$true,
                    Position=0)]
-        $number
+        [decimal]$number
     )
     $sqrt = [math]::sqrt($number)
     return $sqrt
