@@ -1,16 +1,29 @@
 <#
 .Synopsis
-   Retrieves the "nth" root of the input number
+   Retrieves a quantity representing the power to which a fixed number (the base) must be raised to produce a given number
 .DESCRIPTION
    Long description
 .EXAMPLE
-   To take the cube root of 27, you could input the following:
-
-   PS> Get-nRoot -number 27 -root 3
-   3
+   
 .EXAMPLE
 #>
 function Get-Log
 {
-
+    [CmdletBinding()]
+    Param
+    (
+        # Item to take the square root of
+        [Parameter(Mandatory=$true,
+                   ValueFromPipelineByPropertyName=$true,
+                   ValueFromPipeline=$true,
+                   Position=0)]
+        $number,
+        [Parameter(Mandatory=$true,
+                   ValueFromPipelineByPropertyName=$true,
+                   ValueFromPipeline=$true,
+                   Position=1)]
+        $base
+    )
+    $result = [math]::Log($number,$base)
+    return $result
 }
