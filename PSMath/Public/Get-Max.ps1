@@ -1,6 +1,6 @@
 <#
 .Synopsis
-   Returns the smaller of two specified numbers
+   Returns the larger of two specified numbers
 .DESCRIPTION
    Long description
 .EXAMPLE
@@ -10,7 +10,7 @@
    3
 .EXAMPLE
 #>
-function Get-MinValue
+function Get-Max
 {
     [CmdletBinding()]
     Param
@@ -27,6 +27,6 @@ function Get-MinValue
                    Position=1)]
         $number2        
     )
-    $result = [math]::Min($number,$number2)
+    $result = [math]::Max($number,$number2)
     return $result
 }
